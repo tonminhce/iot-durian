@@ -1,6 +1,5 @@
 # IOT CAPSTONE PROJECT
-file:///home/minhnguyen/Pictures/iot-mobile/assets/images/durian.png
-
+![Uploading durian.png…]()
 
 First, please install Android Emulator and config it to start.
 Next, please create a Expo account to build.
