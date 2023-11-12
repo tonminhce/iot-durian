@@ -1,5 +1,6 @@
 # IOT CAPSTONE PROJECT
-![Uploading durian.png…]()
+![durian](https://github.com/tonminhce/iot-durian/assets/87883380/59093fe0-77f2-4c01-b862-08ff13269e93)
+
 
 First, please install Android Emulator and config it to start.
 Next, please create a Expo account to build.
