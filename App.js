@@ -1,73 +1,22 @@
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React, { useState, useEffect } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-
-import OnboardScreen from "./screens/OnboardPage/OnboardScreen";
-import LoginScreen from "./screens/LoginPage/LoginScreen";
-import SignupScreen from "./screens/SignupPage/SignupScreen";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./screens/HomePage/HomeScreen";
 import AutomationScreen from "./screens/AutomationScreen";
 import { ScenarioScreenOptions } from "./screens/ScenarioPage";
-import StatisticScreen from "./screens/StatisticScreen";
-
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
 import ScenarioStack from "./screens/ScenarioPage";
+import { Colors } from "./constants/colors";
 
-SplashScreen.preventAutoHideAsync()
-  .then((_) => {})
-  .catch(console.warn);
+// SplashScreen.preventAutoHideAsync()
+//   .then((_) => {})
+//   .catch(console.warn);
 
-const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-
-function AuthStack() {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        //
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Onboard" component={OnboardScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Signup" component={SignupScreen} />
-    </Stack.Navigator>
-  );
-}
-
-// TODO: stack of screens after successfully authenticated
-function AuthenticatedStack() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen
-        options={{ headerShown: false }}
-        name="Home"
-        component={HomeScreen}
-      />
-      <Tab.Screen name="Automation" component={AutomationScreen} />
-      <Tab.Screen
-        name="Scenario Stack"
-        component={ScenarioStack}
-        options={ScenarioScreenOptions}
-      />
-      <Tab.Screen name="Statistic" component={StatisticScreen} />
-    </Tab.Navigator>
-  );
-}
-
-function Navigation() {
-  return (
-    <NavigationContainer>
-      <AuthStack />
-      {/* <AuthenticatedStack /> */}
-    </NavigationContainer>
-  );
-}
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -77,23 +26,47 @@ export default function App() {
     "epilogue-700": require("./assets/fonts/Epilogue-SemiBold-700.ttf"),
     Pacifico: require("./assets/fonts/Pacifico-Regular.ttf"),
   });
-
-  useEffect(() => {
-    async function hideSplashScreen() {
-      await SplashScreen.hideAsync();
-    }
-    if (fontsLoaded) {
-      hideSplashScreen();
-    }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) return null;
-
   return (
     <SafeAreaProvider>
       <StatusBar style="auto" />
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
 
-      <Navigation />
+              if (route.name === "Home") {
+                iconName = focused ? "home" : "home-outline";
+              } else if (route.name === "Automation") {
+                iconName = focused ? "cog" : "cog-outline";
+              } else if (route.name === "Scenario Stack") {
+                iconName = focused ? "layers" : "layers-outline";
+              } else if (route.name === "Statistic") {
+                iconName = focused ? "analytics" : "analytics-outline";
+              } else if (route.name === "Settings") {
+                iconName = focused ? "settings" : "settings-outline";
+              }
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: "#007FFF",
+            tabBarInactiveTintColor: "gray",
+          })}
+        >
+          <Tab.Screen
+            options={{ headerShown: false }}
+            name="Home"
+            component={HomeScreen}
+          />
+          <Tab.Screen name="Automation" component={AutomationScreen} />
+          <Tab.Screen
+            name="Scenario Stack"
+            component={ScenarioStack}
+            options={ScenarioScreenOptions}
+          />
+          {/* <Tab.Screen name="Statistic" component={StatisticScreen} />
+          <Tab.Screen name="Settings" component={SettingsScreen} /> */}
+        </Tab.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
