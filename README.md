@@ -1,7 +1,9 @@
 # IoT Capstone Project
 
-Welcome to our IoT Capstone Project! This project is designed to be run on an Android Emulator. Follow the instructions below to get started.
 ![durian](https://github.com/tonminhce/iot-durian/assets/87883380/59093fe0-77f2-4c01-b862-08ff13269e93)
+
+
+Welcome to our IoT Capstone Project! This project is designed to be run on an Android Emulator. Follow the instructions below to get started.
 
 ## Prerequisites
 
