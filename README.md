@@ -19,7 +19,7 @@ Follow these steps to install and run the project:
 1. Clone the GitHub repository to your local machine.
 
 ```terminal
-git clone [<repository_url>](https://github.com/tonminhce/iot-durian.git)
+git clone https://github.com/tonminhce/iot-durian.git
 ```
 2. Navigate to the project directory.
 ```terminal
