@@ -16,30 +16,30 @@ Follow these steps to install and run the project:
 
 1. Clone the GitHub repository to your local machine.
 
-```bash
+```terminal
 git clone <repository_url>
-```bash
-Navigate to the project directory.
-```bash
+```
+2. Navigate to the project directory.
+```terminal
 cd <project_directory>
-```bash
-Install the necessary packages.
-```bash
+```
+3. Install the necessary packages.
+```terminal
 npm install
-```bash
-Build the project (please wait until this process is complete).
-```bash
+```
+4. Build the project (please wait until this process is complete).
+```terminal
 eas build --profile development --platform android --local
-```bash
-Start the project.
-```bash
+```
+5. Start the project.
+```terminal
 npm start
-```bash
-After the project has started, press a to open the Android emulator.
+```
+6. After the project has started, press a to open the Android emulator.
 
-Usage
+## Usage
 Open the Android Emulator.
 Run the project.
 Enjoy exploring the IoT Capstone Project!
-Contact
+## Contact
 If you want to contact me you can reach me at tonminhwork@gmail.com.
