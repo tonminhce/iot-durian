@@ -18,23 +18,23 @@ Follow these steps to install and run the project:
 
 ```bash
 git clone <repository_url>
-
+```bash
 Navigate to the project directory.
 ```bash
 cd <project_directory>
-
+```bash
 Install the necessary packages.
 ```bash
 npm install
-
+```bash
 Build the project (please wait until this process is complete).
 ```bash
 eas build --profile development --platform android --local
-
+```bash
 Start the project.
 ```bash
 npm start
-
+```bash
 After the project has started, press a to open the Android emulator.
 
 Usage
